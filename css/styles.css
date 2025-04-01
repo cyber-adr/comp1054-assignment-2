@@ -39,6 +39,10 @@ h1 {
 section {
     position: relative;
 }
+section ol {
+    max-width: 51ch;
+    hyphens: auto;
+}
 aside:nth-of-type(1) {
     grid-column: 1 / 2;
     grid-row: 1/ 3;
@@ -60,9 +64,11 @@ img[src="model.jpg"] {
     /* Fit to box */
     height: 100%;
 }
+h3,p {
+    font-family: 'Roboto', sans-serif;
+}
 aside em,section h3 {
     text-transform: uppercase;
-    font-family: 'Roboto', sans-serif;
     font-style: normal;
     /* Only changes aside em */
     font-weight: bold;
@@ -74,10 +80,14 @@ section h3,section p {
 section:nth-of-type(1) h3 {
     color: var(--magazine-green);
 }
+section:nth-of-type(2) h3 {
+    color: var(--magazine-pink);
+}
+section:nth-of-type(3) h3 {
+    color: var(--magazine-blue);
+}
 p strong {
-    /* display: inline; */
     text-transform: capitalize;
-    font-family: 'Roboto', sans-serif;
 }
 aside>figure {
     margin: 0;
@@ -106,7 +116,6 @@ aside>figure>figcaption>p:nth-child(2), footer>p {
     text-transform: uppercase;
 }
 aside>figure>figcaption>p:nth-child(2) {
-    font-family: 'Roboto', sans-serif;
     /* Will be relative to parent grid item or aside:nth-of-type(2) */
     position: absolute;
     /* Offset top 100% from relative position (main) - 10 characters */
@@ -115,7 +124,7 @@ aside>figure>figcaption>p:nth-child(2) {
     transform: rotate(270deg);
 }
 footer>p:not(em) {
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     text-align: right;
     letter-spacing: 0.05em;
 }
