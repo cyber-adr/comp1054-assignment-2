@@ -35,7 +35,7 @@ h1 {
     text-transform: lowercase;
     letter-spacing: -1.5vw;
     /* Will change in size according to 14% view width with a minimum of 1em */
-    font-size: calc(1em + 14vw);
+    font-size: calc(1em + 15vw);
     color: var(--magazine-orange);
     text-shadow: 0 0 0 transparent;
     transition: color 0.5s, text-shadow 0.5s;
@@ -48,7 +48,7 @@ header>p {
     text-transform: uppercase;
     position: absolute;
     top: 0;
-    left: 2.5vw;
+    left: 7vw;
     font-size: calc(0.5em + 1vw);
 }
 aside:nth-of-type(2), section {
@@ -64,7 +64,7 @@ section {
 }
 section:hover {
     background-color: #510048;
-    color: rgb(143, 143, 143);
+    color: rgb(168, 168, 168);
 }
 section:before {
     position: absolute;
@@ -168,6 +168,7 @@ aside:nth-of-type(2)>h2 {
 aside>figure>figcaption>p:nth-child(2), footer>p {
     font-weight: 200;
     text-transform: uppercase;
+    font-size: calc(0.5em + 1em);
 }
 aside>figure>figcaption>p:nth-child(2) {
     /* Will be relative to main (grid-container) */
