@@ -14,48 +14,68 @@ html {
 }
 main {
     position: relative;
+    margin: 0 auto;
     display: grid;
-    width: 100%;
+    width: 90vw;
     height: 100%;
     grid-template-columns: 1fr 1fr;
     column-gap: 5%;
 }
-h1, header>p {
+h3,p,ol {
+    font-family: 'Roboto', sans-serif;
+    font-size: calc(1em + 0.3vw);
+}
+h1,header>p {
     font-family: 'Roboto Slab', serif;
     font-weight: 200;
-}
-header>p {
-    text-transform: uppercase;
-    position: absolute;
-    top: 0;
-    left: 2.5vw;
-    font-size: 2vw;
 }
 h1 {
     margin: 1vw 0 3vw;
     position: relative;
     text-align: center;
     text-transform: lowercase;
-    /* Will change in size according to 17% view width */
-    font-size: 17vw;
+    letter-spacing: -1.5vw;
+    /* Will change in size according to 14% view width with a minimum of 1em */
+    font-size: calc(1em + 14vw);
     color: var(--magazine-orange);
+    text-shadow: 0;
+    transition: color 0.5s, text-shadow 0.5s;
+}
+h1:hover {
+    color: var(--magazine-pink);
+    text-shadow: 5px 5px 5px #ccc;
+}
+header>p {
+    text-transform: uppercase;
+    position: absolute;
+    top: 0;
+    left: 2.5vw;
+    font-size: calc(0.5em + 1vw);
+}
+aside:nth-of-type(2), section {
+    padding: 3vw;
 }
 aside,section>*:not(h2) {
     line-height: 1.5;
 }
 section {
     position: relative;
-    /* Offset section title down */
-    top: 4%;
+    background-color: transparent;
+    transition: background-color 1s;
+}
+section:hover {
+    background-color: #510048;
+    color: rgb(143, 143, 143);
 }
 section:before {
     position: absolute;
     content: "";
     display: block;
     /* Offset pseudo element up to top of grid */
-    top: -4%;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 5%;
+    height: 2.5vw;
 }
 section:nth-of-type(1):before {
     background-color: var(--magazine-green);
@@ -72,28 +92,35 @@ aside>*:not(:first-child) {
 aside>ol,section>ol {
     max-width: 49ch;
     hyphens: auto;
+    margin-left: auto;
+    background-color: transparent;
 }
 aside:nth-of-type(1) {
     grid-column: 1 / 2;
     grid-row: 1/ 3;
 }
 aside:nth-of-type(2) {
+    position: relative;
     grid-column: 1 / 2;
     grid-row: 3 / 4;
+    top: 0;
+    right: 0;
     width: 90%;
     height: 95%;
     margin: auto 0 0 auto;
     padding: 1em;
     border: 1px solid var(--magazine-orange);
     box-shadow: 2px 2px 7px #aaaaaa;
+    transition: box-shadow 0.5s, top 0.5s, right 0.5s;
+}
+aside:nth-of-type(2):hover {
+    box-shadow: 5vw 5vw 7px #aaaaaa;
+    top: -5%;
+    right: 5%;
 }
 img[src="model.jpg"] {
     /* Fit to box */
-    height: 100%;
     width: 100%;
-}
-h3,p,ol {
-    font-family: 'Roboto', sans-serif;
 }
 aside em,section h3 {
     text-transform: uppercase;
@@ -128,15 +155,15 @@ figcaption>p:first-child {
 section>h2 {
     text-transform: lowercase;
     font-weight: 100;
+    /* Sets minimum font-size to 1em or 16px which is also relative to 2vw */
+    font-size: calc(1em + 5vw);
 
-}
-section>h2 {
-    font-size: 3em;
 }
 /* "on our cover" */
 aside:nth-of-type(2)>h2 {
-    font-size: 2.5em;
+    font-size: calc(1em + 4vw);
     font-weight: 100;
+    text-transform: lowercase;
 
 }
 aside>figure>figcaption>p:nth-child(2), footer>p {
@@ -144,7 +171,7 @@ aside>figure>figcaption>p:nth-child(2), footer>p {
     text-transform: uppercase;
 }
 aside>figure>figcaption>p:nth-child(2) {
-    /* Will be relative to parent grid item or aside:nth-of-type(2) */
+    /* Will be relative to main (grid-container) */
     position: absolute;
     /* Offset top 100% from relative position (main) - 10 characters */
     top: calc(100% - 10ch);
@@ -161,4 +188,37 @@ footer>p:not(em) {
 footer>p em {
     font-family: initial;
     color: var(--magazine-orange);
+}
+
+@media only screen and (max-width: 768px) {
+    main {
+        /* Revert to static to "release" Keith Lathrop caption being relative to main */
+        position: static;
+        display: flex;
+        flex-direction: column;
+    }
+    aside:nth-of-type(1) {
+        order: -2;
+        margin: 0 auto;
+    }
+    img[src="model.jpg"] {
+        /* Fit to box */
+        width: 50vw;
+        box-shadow: 0 0 0 0;
+        border-radius: 0;   
+        transition: box-shadow 1s, border-radius 1s;
+    }
+    img[src="model.jpg"]:active {
+        box-shadow: 0px 10px 10px 5px rgb(255, 156, 173);
+        border-radius: 10vw;
+    }
+    aside:nth-of-type(2) {
+        order: -1;
+        margin: 2em auto;
+    }
+    aside>figure>figcaption>p:nth-child(2) {
+        position: static;
+        transform: none;
+        text-align: center;
+    }
 }
